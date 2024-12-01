@@ -43,7 +43,7 @@ void insert(Nod *crtCopil, Nod *parinte, int cheia)
     }
 }
 
-void preorder(Nod *crtNod)
+void preorder(Nod *crtNod) // traversare in pre-ordine
 {
     if (crtNod == NULL)
     {
@@ -53,6 +53,18 @@ void preorder(Nod *crtNod)
     printf(" %d ", crtNod->cheie);
     preorder(crtNod->st);
     preorder(crtNod->dr);
+}
+
+void inorder(Nod *crtNod) // traversare in in-ordine
+{
+    if (crtNod == NULL)
+    {
+        return;
+    }
+
+    inorder(crtNod->st);
+    printf(" %d ", crtNod->cheie);
+    inorder(crtNod->dr);
 }
 
 int main()
@@ -65,9 +77,14 @@ int main()
     insert(radacina, radacina, 11);
 
     printf("---------------------------\n");
+
     printf("1.Traversare pre-ordine: \n");
     preorder(radacina);
     printf("\n--------------------------\n");
+
+    printf("2.Traversare in-ordine: \n");
+    inorder(radacina);
+    printf("\n----------------------------\n");
 
     return 0;
 }
