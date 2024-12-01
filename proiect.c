@@ -67,6 +67,18 @@ void inorder(Nod *crtNod) // traversare in in-ordine
     inorder(crtNod->dr);
 }
 
+void postorder(Nod *crtNod) // traversare in post-ordine
+{
+    if (crtNod == NULL)
+    {
+        return;
+    }
+
+    postorder(crtNod->st);
+    postorder(crtNod->dr);
+    printf(" %d ", crtNod->cheie);
+}
+
 int main()
 {
     Nod *radacina = init(10);
@@ -84,6 +96,10 @@ int main()
 
     printf("2.Traversare in-ordine: \n");
     inorder(radacina);
+    printf("\n----------------------------\n");
+
+    printf("3.Traversare post-ordine: \n");
+    postorder(radacina);
     printf("\n----------------------------\n");
 
     return 0;
