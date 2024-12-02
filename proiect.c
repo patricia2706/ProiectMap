@@ -8,7 +8,7 @@ typedef struct Nod
     struct Nod *dr;
 } Nod;
 
-Nod *init(int cheia)
+Nod *init(int cheia) // initializare arbore
 {
     Nod *nod = (Nod *)malloc(sizeof(Nod));
     nod->cheie = cheia;
@@ -79,6 +79,55 @@ void postorder(Nod *crtNod) // traversare in post-ordine
     printf(" %d ", crtNod->cheie);
 }
 
+int adancime(Nod *crtNod) // calculare adancime arbore
+{
+    if (crtNod == NULL)
+    {
+        return 0;
+    }
+
+    int stanga = adancime(crtNod->st);
+    int dreapta = adancime(crtNod->dr);
+
+    if (stanga > dreapta)
+    {
+        return stanga + 1;
+    }
+    else
+    {
+        return dreapta + 1;
+    }
+}
+
+void levelDisplay(Nod *crtNod, int level)// afisarea nodurilor unui nivel
+{
+    if (crtNod == NULL)
+    {
+        return;
+    }
+
+    if (level == 1)
+    {
+        printf("%d ", crtNod->cheie);
+    }
+    else if (level > 1)
+    {
+        levelDisplay(crtNod->st, level - 1);
+        levelDisplay(crtNod->dr, level - 1);
+    }
+}
+
+void levelOrder(Nod *radacina)
+{
+    int d = adancime(radacina);
+
+    for (int i = 0; i <= d; i++)
+    {
+        levelDisplay(radacina,i);
+    }
+}
+
+
 int main()
 {
     Nod *radacina = init(10);
@@ -100,6 +149,10 @@ int main()
 
     printf("3.Traversare post-ordine: \n");
     postorder(radacina);
+    printf("\n----------------------------\n");
+
+    printf("4.Traversare pe nivel.\n");
+    levelOrder(radacina);
     printf("\n----------------------------\n");
 
     return 0;
