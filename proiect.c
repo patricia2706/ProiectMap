@@ -108,7 +108,7 @@ void levelDisplay(Nod *crtNod, int level)// afisarea nodurilor unui nivel
 
     if (level == 1)
     {
-        printf("%d ", crtNod->cheie);
+        printf(" %d ", crtNod->cheie);
     }
     else if (level > 1)
     {
@@ -127,16 +127,37 @@ void levelOrder(Nod *radacina)
     }
 }
 
+void afisareArbore(Nod *crtNod, int nivel) // afisare arbore
+{
+    if (crtNod == NULL)
+    {
+        return;
+    }
+
+    for (int i = 0; i < nivel; i++)
+    {
+        printf("   ");
+    }
+
+    printf("%d\n", crtNod->cheie);
+
+    // Afisare subarbori stanga si dreapta
+    afisareArbore(crtNod->st, nivel + 1);
+    afisareArbore(crtNod->dr, nivel + 1);
+}
 
 int main()
 {
-    Nod *radacina = init(10);
-    insert(radacina, radacina, 4);
-    insert(radacina, radacina, 12);
-    insert(radacina, radacina, 2);
-    insert(radacina, radacina, 3);
-    insert(radacina, radacina, 11);
+    Nod *radacina = init(rand() % 100 + 1);
+    insert(radacina, radacina, rand() % 100 + 1);
+    insert(radacina, radacina, rand() % 100 + 1);
+    insert(radacina, radacina, rand() % 100 + 1);
+    insert(radacina, radacina, rand() % 100 + 1);
+    insert(radacina, radacina, rand() % 100 + 1);
 
+    printf("---------------------------\n");
+    printf("Arborele inainte de traversari:\n");
+    afisareArbore(radacina, 0);
     printf("---------------------------\n");
 
     printf("1.Traversare pre-ordine: \n");
