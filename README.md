@@ -119,7 +119,9 @@ Programul implementează un arbore binar în limbajul C, utilizând structuri de
     
     - Arborele inainte de traversari
     - Exemplu:
+    
     ![arboreInainte](https://github.com/user-attachments/assets/b5c34c2b-3867-49d8-970d-f97d4956cb57)
     -   Traversările în pre-ordine, in-ordine și post-ordine.
     -  Exemplu: 
+    
     ![traversari](https://github.com/user-attachments/assets/8ab5e739-799f-4b85-86ed-2a04d8e6bde2)
