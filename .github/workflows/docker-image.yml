@@ -29,7 +29,7 @@ jobs:
     - name: Build the Docker image
       id: docker_build
       env:
-        IMAGE_NAME: ghcr.io/proiectmap
+        IMAGE_NAME: ghcr.io/patricia2706/proiectmap
       run: |
           docker build . --file Dockerfile --tag $IMAGE_NAME:latest
           docker push $IMAGE_NAME:latest
